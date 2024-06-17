@@ -5,12 +5,14 @@ package lab06;
  * Names: Lucia Liu, Nithya Ramasubramonian
  * Due date: 6/1/24
  * Purpose: The purpose of this lab is to practice implementing Binary Search Trees through a Dollar modeling scenario.
+ * New edits: Add height attribute
  */
 public class BSTNode {
 
 	private Dollar dollar;
 	private BSTNode left;
 	private BSTNode right;
+	private int height;
 
 	/*
 	 * Pre:
@@ -24,6 +26,15 @@ public class BSTNode {
 		this.dollar = dollar;
 		this.left = null;
 		this.right = null;
+		height = 0;
+	}
+	
+	public int getHeight() {
+		return height;
+	}
+	
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 	/*

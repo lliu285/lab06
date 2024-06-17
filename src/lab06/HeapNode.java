@@ -2,20 +2,30 @@ package lab06;
 
 public class HeapNode extends BSTNode
 {
-	private BSTNode parent;
+	private HeapNode parent;
 	
-	public HeapNode(Dollar dollar, BSTNode parent) 
+	public HeapNode(Dollar dollar, HeapNode parent, int height) 
 	{
 		super(dollar);
 		this.parent = parent;
 	}
 	
-	public BSTNode getParent()
+//	public int getHeight()
+//	{
+//		return height;
+//	}
+//	
+//	public void setHeight(int height)
+//	{
+//		this.height = height;
+//	}
+	
+	public HeapNode getParent()
 	{
 		return parent;
 	}
 	
-	public void setParent(BSTNode parent)
+	public void setParent(HeapNode parent)
 	{
 		this.parent = parent;
 	}

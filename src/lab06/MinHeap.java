@@ -1,7 +1,5 @@
 package lab06;
 
-import java.io.PrintStream;
-
 public class MinHeap
 {
 	//private HeapNode[] heap;
@@ -16,7 +14,6 @@ public class MinHeap
 	
 	private void percolateUp()
 	{
-		
 		
 		/* note: this is for max heap
 		while (nodeIndex > 0) {
@@ -45,12 +42,54 @@ public class MinHeap
 	
 	public void insert(Dollar dollar) 
 	{
+		HeapNode node = root;
 		
+		while (true) {
+			
+		}
+	}
+	
+	private boolean insertHelper(HeapNode node) 
+	{
+		if (node.getDollar().isGreater(node.getParent().getDollar())) {
+			swap(node, node.getParent());
+		}
+		
+		return false;
+	}
+	
+	private BSTNode findEmptyPos(BSTNode node)
+	{
+		if (node.getHeight() == 0) {
+			return node;
+		} else {
+			if (node.getLeft().getHeight() >= node.getRight().getHeight()) {
+				return findEmptyPos(node.getLeft());
+			} else {
+				return findEmptyPos(node.getRight());
+			}
+		}
 	}
 	
 	public boolean search(Dollar dollar) 
 	{
-		return true;
+		return searchHelper(root, dollar);
+	}
+	
+	private boolean searchHelper(BSTNode root, Dollar dollar) 
+	{
+		Dollar curr = root.getDollar();
+		
+		if (dollar.isGreater(curr)) {
+			return false;
+		} else if (dollar.isEqual(curr)) {
+			return true;
+		} else {
+			if (!searchHelper(root.getLeft(), dollar)) {
+				return searchHelper(root.getRight(), dollar);
+			}
+			return true;	
+		}
 	}
 	
 	public void delete(Dollar dollar)
