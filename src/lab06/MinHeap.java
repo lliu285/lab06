@@ -16,7 +16,11 @@ public class MinHeap
 	}
 	
 	/*
+	 * Pre:
+	 * node - HeapNode that is being percolated up
 	 * 
+	 * Post:
+	 * Reorganizes heap starting from the given node
 	 */
 	private void percolateUp(HeapNode node)
 	{
@@ -28,12 +32,15 @@ public class MinHeap
 	}
 	
 	/*
+	 * Pre:
+	 * node - HeapNode that is being percolated down
 	 * 
+	 * Post:
+	 * Reorganizes heap starting from the given node
 	 */
 	private void percolateDown(HeapNode node)
 	{
-		while (node.getLeft() != null /*&&
-			   node.getDollar().isGreater(node.getLeft().getDollar())*/) {
+		while (node.getLeft() != null) {
 			if (node.getRight() == null) {
 				swapNodes(node, node.getLeft());
 				node = node.getLeft();
@@ -77,11 +84,26 @@ public class MinHeap
 	
 	/*
 	 * Pre:
-	 * node - 
-	 * dollar - 
+	 * node - Node in the heap that is checked to see if a new node can be added
+	 * dollar - Dollar value of the node that is being added
+	 * 
+	 * Post:
+	 * A HeapNode with the specified dollar value is inserted 
+	 * at the specified node or the node's child if conditions are suitable.
+	 * Otherwise, method is called again for a child node.
 	 */
 	private HeapNode insertHelper(HeapNode node, Dollar dollar) 
 	{
+		/*
+		 * Pseudocode:
+		 * If node is null, set the root node to the new node
+		 * If node's left child is null, add the new node as node's left child
+		 * If node's right child is null, add the new node as node's right child
+		 * If node's left child's height is greater than or equal to node's right child's height, 
+		 * 		call the function again for the right child
+		 * If node's right child's height is greater than node's right child's height, 
+		 * 		call the function again for the left child
+		 */
 		HeapNode newNode;
 		
 		if (node == null) { // insert root node
@@ -94,7 +116,7 @@ public class MinHeap
 		} else if (node.getRight() == null) {
 			newNode = new HeapNode(dollar, node);
 			node.setRight(newNode);
-		} else if (node.getHeight(node.getLeft()) > node.getHeight(node.getRight())) {
+		} else if (node.getHeight(node.getLeft()) >= node.getHeight(node.getRight())) {
 			newNode = insertHelper(node.getRight(), dollar);
 		} else {
 			newNode = insertHelper(node.getLeft(), dollar);
@@ -103,11 +125,29 @@ public class MinHeap
 		return newNode;
 	}
 	
+	/*
+	 * Pre:
+	 * dollar - Dollar value that is searched for in heap
+	 * 
+	 * Post:
+	 * Returns true if a node containing the specified dollar value is found.
+	 * Returns false otherwise.
+	 */
 	public boolean search(Dollar dollar) 
 	{
 		return searchHelper(root, dollar);
 	}
 	
+	/*
+	 * Pre:
+	 * node - HeapNode where dollar value is being searched for
+	 * dollar - Dollar value that is searched for in heap
+	 * 
+	 * Post:
+	 * Returns false if node is null.
+	 * Returns true if dollar is equal to the node's dollar value.
+	 * Otherwise, the method is called again to check the node's children.
+	 */
 	private boolean searchHelper(HeapNode node, Dollar dollar) 
 	{
 		if (node == null) {
@@ -119,11 +159,22 @@ public class MinHeap
 		}
 	}
 
+	/*
+	 * Post:
+	 * The last inserted HeapNode in the MinHeap is returned.
+	 */
 	private HeapNode getLastNode()
 	{
 		return getLastNodeHelper(root);
 	}
 	
+	/*
+	 * Pre:
+	 * node - Starting HeapNode object from which finding the last inserted node.
+	 * 
+	 * Post:
+	 * The last inserted HeapNode object after the input HeapNode object is returned.
+	 */
 	private HeapNode getLastNodeHelper(HeapNode node)
 	{		
 		if (node == null) {
@@ -143,6 +194,11 @@ public class MinHeap
 		}
 	}
 	
+	/*
+	 * Post:
+	 * The minimum HeapNode object is deleted from the MinHeap and the contained Dollar
+	 * object is returned.
+	 */
 	public Dollar delete()
 	{
 		Dollar dollar;
@@ -176,7 +232,7 @@ public class MinHeap
 	 * title - String of specified traversal type.
 	 * 
 	 * Post:
-	 * Prints a header for the specified traversal type in console and output file.
+	 * Prints a header for the specified traversal type.
 	 */
 	private void printTitle(String title) 
 	{
@@ -196,9 +252,6 @@ public class MinHeap
 	}
 
 	/*
-	 * Pre:
-	 * ps - File-based PrintStream object for the output file.
-	 * 
 	 * Post:
 	 * Prints the in-order traversal of the binary search tree.
 	 */
@@ -210,7 +263,7 @@ public class MinHeap
 
 	/*
 	 * Pre:
-	 * node - A reference to a node in the binary search tree or null.
+	 * node - A BSTNode reference or null.
 	 * 
 	 * Post:
 	 * Prints the in-order traversal of the binary search tree rooted at the specified node.
@@ -233,11 +286,8 @@ public class MinHeap
 	}
 
 	/*
-	 * Pre:
-	 * ps - File-based PrintStream object for the output file.
-	 * 
 	 * Post:
-	 * Prints the pre-order traversal of the binary search tree.
+	 * Prints the pre-order traversal of the heap.
 	 */
 	public void preOrderTraversal() 
 	{
@@ -247,10 +297,10 @@ public class MinHeap
 
 	/*
 	 * Pre:
-	 * node - A reference to a node in the binary search tree or null.
+	 * node - A BSTNode reference or null.
 	 * 
 	 * Post:
-	 * Prints the pre-order traversal of the binary search tree rooted at the specified node.
+	 * Prints the pre-order traversal rooted at the specified node.
 	 */
 	private void preOrderTraversalHelper(BSTNode node) 
 	{
@@ -270,11 +320,8 @@ public class MinHeap
 	}
 
 	/*
-	 * Pre:
-	 * ps - File-based PrintStream object for the output file.
-	 * 
 	 * Post:
-	 * Prints the post-order traversal of the binary search tree.
+	 * Prints the post-order traversal of the heap.
 	 */
 	public void postOrderTraversal() 
 	{
@@ -284,10 +331,10 @@ public class MinHeap
 
 	/*
 	 * Pre:
-	 * node - A reference to a node in the binary search tree or null.
+	 * node - A BSTNode reference or null.
 	 * 
 	 * Post:
-	 * Prints the post-order traversal of the binary search tree rooted at the specified node.
+	 * Prints the post-order traversal rooted at the specified node.
 	 */
 	private void postOrderTraversalHelper(BSTNode node) {
 		/*
@@ -306,11 +353,8 @@ public class MinHeap
 	}
 
 	/*
-	 * Pre:
-	 * ps - File-based PrintStream object for the output file.
-	 * 
 	 * Post:
-	 * Prints the breadth-first traversal of the binary search tree.
+	 * Prints the breadth-first traversal of the heap.
 	 */
 	public void breadthFirstTraversal() {
 		/*
@@ -364,7 +408,7 @@ public class MinHeap
 	 * level - Positive integer indicating the level in the binary search tree.
 	 * 
 	 * Post:
-	 * Prints the nodes at the specified level in the binary search tree rooted at the specified node.
+	 * Prints the nodes at the specified level in the heap rooted at the specified node.
 	 */
 	private void breadthFirstTraversalHelper(BSTNode node, int level) {
 		/*

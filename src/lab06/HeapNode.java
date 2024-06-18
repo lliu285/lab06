@@ -39,17 +39,15 @@ public class HeapNode extends BSTNode
 	/*
 	 * Post: Returns the left HeapNode child.
 	 */
-	@Override
 	public HeapNode getLeft() {
-		return (HeapNode)super.getLeft();
+		return (HeapNode) super.getLeft();
 	}
 
 	/*
 	 * Post: Returns the right HeapNode child.
 	 */
-	@Override
 	public HeapNode getRight() {
-		return (HeapNode)super.getRight();
+		return (HeapNode) super.getRight();
 	}
 	
 	/*
