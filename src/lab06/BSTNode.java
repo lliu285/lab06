@@ -12,7 +12,6 @@ public class BSTNode {
 	private Dollar dollar;
 	private BSTNode left;
 	private BSTNode right;
-	private int height;
 
 	/*
 	 * Pre:
@@ -26,17 +25,8 @@ public class BSTNode {
 		this.dollar = dollar;
 		this.left = null;
 		this.right = null;
-		height = 0;
 	}
 	
-	public int getHeight() {
-		return height;
-	}
-	
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
 	/*
 	 * Post: Returns the dollar attribute of the BSTNode.
 	 */
