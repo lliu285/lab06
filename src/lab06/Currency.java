@@ -5,6 +5,7 @@ package lab06;
  * Names: Lucia Liu, Nithya Ramasubramonian
  * Due date: 5/8/24
  * Purpose: The purpose of this lab is to practice Inheritance and Polymorphism through a Currency modeling scenario.
+ * New edit: Change toString() to not include "Dollar" after numerical value
  */
 
 public abstract class Currency 
@@ -244,7 +245,8 @@ public abstract class Currency
      * 
      */
     public String toString() {
-        return String.format("%d.%02d %s", getWholeValue(), getFractionValue(), getName());
+        //return String.format("%d.%02d %s", getWholeValue(), getFractionValue(), getName());
+        return String.format("%d.%02d", getWholeValue(), getFractionValue());
     }
     
 	/*

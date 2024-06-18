@@ -12,13 +12,13 @@ public class Main6
 	{
 		Dollar[] dollars = new Dollar[20];
 		
-		dollars[0] = new Dollar(1.00);
-		dollars[1] = new Dollar(2.00);
-		dollars[2] = new Dollar(3.00);
-		dollars[3] = new Dollar(4.00);
-		dollars[4] = new Dollar(5.00);
-		dollars[5] = new Dollar(6.00);
-		/*
+//		dollars[0] = new Dollar(1.00);
+//		dollars[1] = new Dollar(2.00);
+//		dollars[2] = new Dollar(3.00);
+//		dollars[3] = new Dollar(4.00);
+//		dollars[4] = new Dollar(5.00);
+//		dollars[5] = new Dollar(6.00);
+		
 		dollars[0] = new Dollar(57.12);
 		dollars[1] = new Dollar(23.44);
 		dollars[2] = new Dollar(87.43);
@@ -39,9 +39,9 @@ public class Main6
 		dollars[17] = new Dollar(1.00);
 		dollars[18] = new Dollar(251.00);
 		dollars[19] = new Dollar(151.00);
-		*/
+		
 		MinHeap heap = new MinHeap();
-		/*
+		
 		for (int i = 0; i < 10; i++) {
 			heap.insert(dollars[i]);
 		}
@@ -52,25 +52,31 @@ public class Main6
 		heap.inOrderTraversal(); 
 		heap.preOrderTraversal();
 		heap.postOrderTraversal();
-		*/
+		
+		for (int i = 10; i < dollars.length; i++) {
+			heap.insert(dollars[i]);
+		}
 		
 		for (int i = 0; i < 6; i++) {
 			heap.insert(dollars[i]);
 		}
-		/*
-		for (int i = 0; i < 6; i++) {
-			heap.insert(dollars[i]);
-		}*/
 
 		// traversals
-		//System.out.println("\n\nHeap after 20 insertions----------------------------------------");
+		System.out.println("\n\n\nHeap after 20 insertions----------------------------------------");
 		heap.breadthFirstTraversal(); 
 		heap.inOrderTraversal(); 
 		heap.preOrderTraversal();
 		heap.postOrderTraversal();
 		
-		heap.delete();
+		//heap.delete();
 		
+		
+		/*
+		for (int i = 0; i < 6; i++) {
+			heap.insert(dollars[i]);
+		}*/
+		
+		/*
 		System.out.println("\n\nHeap after delete----------------------------------------");
 		heap.breadthFirstTraversal(); 
 		//heap.inOrderTraversal(); 
@@ -92,7 +98,7 @@ public class Main6
 		
 		System.out.println(heap.search(new Dollar(4.00)));
 		System.out.println(heap.search(new Dollar(4.80)));
-		
+		*/
 		
 	}
 }

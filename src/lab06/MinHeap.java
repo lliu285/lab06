@@ -103,33 +103,13 @@ public class MinHeap
 		return newNode;
 	}
 	
-//	private HeapNode findStartPos(HeapNode node)
-//	{
-//		if (node == null) {
-//			return node;
-//		} else if (node.getHeight(node) == 0) {
-//			return node;
-//		} else {
-//			if (node.getRight() == null || 
-//				node.getLeft().getHeight(node) >= node.getRight().getHeight(node)) {
-//				return findStartPos(node.getLeft());
-//			} else {
-//				return findStartPos(node.getRight());
-//			}
-//		}
-//	}
-	
 	public boolean search(Dollar dollar) 
 	{
-		
-		
 		return searchHelper(root, dollar);
 	}
 	
 	private boolean searchHelper(HeapNode node, Dollar dollar) 
 	{
-		//Dollar curr = node.getDollar();
-		
 		if (node == null) {
 			return false;
 		} else if (dollar.isEqual(node.getDollar())) {
@@ -212,7 +192,7 @@ public class MinHeap
 	 */
 	private void printNode(BSTNode node) 
 	{
-		System.out.print(node.getDollar() + " ");
+		System.out.print("$" + node.getDollar() + " ");
 	}
 
 	/*
@@ -224,7 +204,7 @@ public class MinHeap
 	 */
 	public void inOrderTraversal() 
 	{
-		printTitle("In-order traversal");
+		printTitle("\nIn-order traversal");
 		inOrderTraversalHelper(root);
 	}
 
@@ -261,7 +241,7 @@ public class MinHeap
 	 */
 	public void preOrderTraversal() 
 	{
-		printTitle("Pre-order traversal");
+		printTitle("\nPre-order traversal");
 		preOrderTraversalHelper(root);
 	}
 
@@ -298,7 +278,7 @@ public class MinHeap
 	 */
 	public void postOrderTraversal() 
 	{
-		printTitle("Post-order traversal");
+		printTitle("\nPost-order traversal");
 		postOrderTraversalHelper(root);
 	}
 
